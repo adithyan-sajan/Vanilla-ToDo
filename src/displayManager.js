@@ -1,6 +1,8 @@
 export function attachToSidebar(sideBarRoot, projectArr) {
     projectArr.forEach((project) => {
         let div = document.createElement("div");
+        div.classList.add("left-side-bar-item");
+        div.dataset.id = project.name;
         sideBarRoot.appendChild(div);
         let h3 = document.createElement("h3");
         div.appendChild(h3)
@@ -10,30 +12,46 @@ export function attachToSidebar(sideBarRoot, projectArr) {
             h4.innerHTML = item.name;
             div.appendChild(h4)
         }
+        div.addEventListener("click", ()=>{
+            let cardContainer = document.querySelector(".card-container");
+            clearCardContainer(cardContainer);
+            let array = findFromProject(projectArr,div.dataset.id);
+            console.log(array.todos);
+            generateCardFromProject(cardContainer,array);
+        })
     })
 }
 export function generateCards(cardContainer, projectArr) {
     projectArr.forEach((project) => {
-        for (let item of project.todos) {
-            let div = document.createElement("div");
-            div.classList.add("card");
-            cardContainer.appendChild(div);
-
-            let h3 = document.createElement("h3");
-            let date = document.createElement("p");
-            let body = document.createElement("p");
-            let btn = document.createElement("button");
-            console.log(item);
-            h3.textContent = item.name;
-            date.textContent = item.date;
-            body.textContent = item.body;
-            body.classList.add("body-text");
-            btn.textContent = "mark as done";
-
-            div.appendChild(h3);
-            div.appendChild(date);
-            div.appendChild(body);
-            div.appendChild(btn);
-        }
+        generateCardFromProject(cardContainer,project);
     })
+}
+export function clearCardContainer(div) {
+    div.innerHTML = "";
+}
+export function generateCardFromProject(cardContainer, project) {
+    for (let item of project.todos) {
+        let div = document.createElement("div");
+        div.classList.add("card");
+        cardContainer.appendChild(div);
+
+        let h3 = document.createElement("h3");
+        let date = document.createElement("p");
+        let body = document.createElement("p");
+        let btn = document.createElement("button");
+        h3.textContent = item.name;
+        date.textContent = item.date;
+        body.textContent = item.body;
+        body.classList.add("body-text");
+        btn.textContent = "mark as done";
+
+        div.appendChild(h3);
+        div.appendChild(date);
+        div.appendChild(body);
+        div.appendChild(btn);
+    }
+}
+
+function findFromProject(projectArr, id) {
+    return projectArr.find((project) => project.name === id);
 }
