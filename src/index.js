@@ -1,63 +1,8 @@
 import './styles.css'
 import *  as projectManager from './projectManager'
-
-// const projectContainer = (function () {
-//     const projects = [];
-//     function addToContainer(object) {
-//         projects.push(object);
-//     };
-//     function getProjects() {
-//         return projects;
-//     }
-//     return {
-//         getProjects,
-//         addToContainer
-//     }
-// })();
-
-// function createProject(name) {
-//     return {
-//         name,
-//         todos: [],
-//         addToProject: function (object) {
-//             this.todos.push(object)
-//         },
-//         getToDos: function () {
-//             return this.todos
-//         }
-//     }
-// }
-
-// function projectManager.createToDo(name, body, date, priority) {
-//     return {
-//         name,
-//         body,
-//         date,
-//         priority
-//     }
-// }
+import *  as displayManager from './displayManager'
 
 let projectContainer = projectManager.createProjectContainer()
-
-
-function attachToSidebar() {
-    const sideBarRoot = document.querySelector(".projects");
-    const projectArr = projectContainer.getProjects();
-    projectArr.forEach((project) => {
-        let div = document.createElement("div");
-        sideBarRoot.appendChild(div);
-        let h3 = document.createElement("h3");
-        div.appendChild(h3)
-        h3.innerHTML = project.name;
-        for (let item of project.todos) {
-            let h4 = document.createElement("h4");
-            h4.innerHTML = item.name;
-            div.appendChild(h4)
-        }
-    })
-}
-
-
 
 let todo1 = projectManager.createToDo("todo1", "body1", "2025-05-08", "high");
 let todo2 = projectManager.createToDo("todo2", "body2", "2025-05-09", "medium");
@@ -90,7 +35,13 @@ projectContainer.addToContainer(project1);
 projectContainer.addToContainer(project2);
 projectContainer.addToContainer(project3);
 
-attachToSidebar();
+const sideBarRoot = document.querySelector(".projects");
+const projectArr = projectContainer.getProjects();
+displayManager.attachToSidebar(sideBarRoot, projectArr)
+
+const cardContainer = document.querySelector(".card-container");
+displayManager.generateCards(cardContainer, projectArr);
+
 
 console.log(todo1);
 console.log(projectContainer.getProjects());
