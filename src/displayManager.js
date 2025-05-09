@@ -18,6 +18,7 @@ export function attachToSidebar(sideBarRoot, projectArr) {
             let array = findFromProject(projectArr,div.dataset.id);
             console.log(array.todos);
             generateCardFromProject(cardContainer,array);
+            currentProject = div.dataset.id;
         })
     })
 }
@@ -51,7 +52,21 @@ export function generateCardFromProject(cardContainer, project) {
         div.appendChild(btn);
     }
 }
+export let currentProject = "project1"
 
-function findFromProject(projectArr, id) {
+export function findFromProject(projectArr, id) {
     return projectArr.find((project) => project.name === id);
 }
+
+const modal = document.querySelector(".modal-container");
+export function showModal() {
+    modal.classList.add("active-modal");
+}
+
+const newTodoButton = document.querySelector("#new-todo");
+newTodoButton.addEventListener("click",showModal);
+
+const cancelButton = document.querySelector("#cancel-button");
+cancelButton.addEventListener("click",function(){
+    modal.classList.remove("active-modal");
+});

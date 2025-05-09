@@ -108,6 +108,10 @@ button {
   z-index: 100;
   pointer-events: none;
 }
+.active-modal{
+  display: flex;
+  pointer-events: all;
+}
 .form-container{
   background-color: white;
   padding: 50px;

@@ -2,6 +2,8 @@ import './styles.css'
 import *  as projectManager from './projectManager'
 import *  as displayManager from './displayManager'
 
+
+
 let projectContainer = projectManager.createProjectContainer()
 
 let todo1 = projectManager.createToDo("todo1", "body1", "2025-05-08", "high");
@@ -43,6 +45,5 @@ const cardContainer = document.querySelector(".card-container");
 displayManager.generateCards(cardContainer, projectArr);
 
 
-console.log(todo1);
-console.log(projectContainer.getProjects());
+
 
