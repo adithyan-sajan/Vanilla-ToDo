@@ -19,7 +19,10 @@
       <div class="projects"></div>
     </div>
     <div class="right-side">
-      <div class="right-header"><h1>Vanilla ToDo List</h1></div>
+      <div class="right-header">
+        <h1>Vanilla ToDo List</h1>
+        <button type="button">New ToDo</button>
+      </div>
       <div class="card-container">
         <div class="card">
           <h3>Title</h3>
@@ -28,6 +31,38 @@
           <button type="button">Mark as Done</button>
         </div>
       </div>
+    </div>
+    <div class="modal-container">
+      <form action="submit" class="form-container">
+        <h2>New ToDo</h2>
+        <span>
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="Enter the Title" />
+        </span>
+        <span>
+          <label for="date">Due Date</label>
+          <input type="date" name="date" id="date">
+        </span>
+        <span>
+          <label for="body">Text</label>
+          <input type="text" name="body" id="body" placeholder="Enter the Text" />
+        </span>
+        <span>
+          <p>Priority</p>
+          <span class="radio-buttons">
+            <label for="low">low</label>
+            <input type="radio" name="priority" id="low" value="low">
+            <label for="medium">medium</label>
+            <input type="radio" name="priority" id="medium" value="medium">
+            <label for="high">high</label>
+            <input type="radio" name="priority" id="high" value="high">
+          </span>
+        </span>
+        <span class="modal-buttons">
+          <button type="submit">Submit</button>
+          <button type="button">Cancel</button>
+        </span>
+      </form>
     </div>
   </body>
 </html>

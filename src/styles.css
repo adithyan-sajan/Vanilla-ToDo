@@ -61,6 +61,10 @@ body {
 .right-header {
   background-color: #fdfbed;
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
 }
 .card-container {
   display: grid;
@@ -88,4 +92,28 @@ body {
 }
 button {
   margin-top: auto;
+}
+
+.modal-container{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+.form-container{
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+  /*width: 25%;*/
+  /*height: 25%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 25px;
 }
