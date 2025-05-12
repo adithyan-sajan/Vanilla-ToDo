@@ -12,19 +12,19 @@ export function attachToSidebar(sideBarRoot, projectArr) {
             h4.innerHTML = item.name;
             div.appendChild(h4)
         }
-        div.addEventListener("click", ()=>{
+        div.addEventListener("click", () => {
             let cardContainer = document.querySelector(".card-container");
             clearCardContainer(cardContainer);
-            let array = findFromProject(projectArr,div.dataset.id);
+            let array = findFromProject(projectArr, div.dataset.id);
             console.log(array.todos);
-            generateCardFromProject(cardContainer,array);
+            generateCardFromProject(cardContainer, array);
             currentProject = div.dataset.id;
         })
     })
 }
 export function generateCards(cardContainer, projectArr) {
     projectArr.forEach((project) => {
-        generateCardFromProject(cardContainer,project);
+        generateCardFromProject(cardContainer, project);
     })
 }
 export function clearCardContainer(div) {
@@ -55,6 +55,8 @@ export function generateCardFromProject(cardContainer, project) {
 export let currentProject = "project1"
 
 export function findFromProject(projectArr, id) {
+    console.log("projectArr:", projectArr);
+    console.log("Type of projectArr:", typeof projectArr);
     return projectArr.find((project) => project.name === id);
 }
 
@@ -64,9 +66,10 @@ export function showModal() {
 }
 
 const newTodoButton = document.querySelector("#new-todo");
-newTodoButton.addEventListener("click",showModal);
+newTodoButton.addEventListener("click", showModal);
 
 const cancelButton = document.querySelector("#cancel-button");
-cancelButton.addEventListener("click",function(){
+cancelButton.addEventListener("click", function () {
     modal.classList.remove("active-modal");
 });
+

@@ -2,7 +2,18 @@ import './styles.css'
 import *  as projectManager from './projectManager'
 import *  as displayManager from './displayManager'
 
+const form = document.querySelector(".form-container");
+form.addEventListener("submit", (event) => {
+    // event.preventDefault();
 
+    const title = document.getElementById("title").value;
+    const date = document.getElementById("date").value;
+    const body = document.getElementById("body").value;
+    const priority = document.querySelector('input[name="priority"]:checked')?.value ?? "low";
+    let tempToDo = projectManager.createToDo(title, body, date, priority);
+    let currProj = displayManager.findFromProject(projectContainer.getProjects(), displayManager.currentProject);
+    currProj.addToProject(tempToDo);
+});
 
 let projectContainer = projectManager.createProjectContainer()
 
