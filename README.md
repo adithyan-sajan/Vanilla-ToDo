@@ -27,13 +27,18 @@ A modular, maintainable ToDo list application built using **Vanilla JavaScript**
 
 ## 🧱 Architecture Overview
 
-This project is built around a **modular and layered architecture**:
+This project follows a **modular and layered architecture** with clear separation of responsibilities across three main modules:
 
-- **Data Layer:** Handles project and todo object creation, manipulation, and localStorage integration.
-- **UI Layer:** Responsible for DOM manipulation and rendering data into visual components.
-- **Controller Layer:** Orchestrates between UI events and data logic, acting as the glue.
+- **`index.js` (Main Entry):**  
+  Serves as the central orchestrator. It initializes the app, sets up event listeners, and delegates tasks to the appropriate modules.
 
-Each module does **one thing well**, in line with **SOLID** and **clean code** practices.
+- **`displayController.js`:**  
+  Responsible for all DOM manipulation and UI rendering. It updates the interface in response to data changes or user interactions.
+
+- **`projectController.js`:**  
+  Manages the core logic for projects and todos — creation, modification, deletion, and localStorage persistence.
+
+This structure keeps concerns well-separated and maintainable, aligning with **modular programming** principles and the **Single Responsibility Principle** from SOLID.
 
 ---
 
